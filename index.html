@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mr Momo Supply Portal</title>
+<style>
+body{font-family:Arial;background:#f5f5f5;margin:0}
+header{background:#b30000;color:#fff;text-align:center;padding:20px}
+.container{max-width:1100px;margin:auto;padding:20px}
+h2{margin:20px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.card{background:#fff;padding:15px;border-radius:12px;box-shadow:0 3px 8px rgba(0,0,0,0.1)}
+.card h3{margin-bottom:10px}
+select,input{width:100%;padding:8px;border-radius:8px;border:1px solid #ccc}
+.qty-box{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+.qty-box button{width:35px;height:35px;border:none;background:#b30000;color:#fff;border-radius:50%;font-size:18px;cursor:pointer}
+.qty-box input{width:60px;text-align:center}
+form{background:#fff;padding:20px;border-radius:12px}
+button.submit{margin-top:20px;width:100%;padding:12px;background:#b30000;color:#fff;border:none;border-radius:10px;font-size:16px}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Mr Momo Supply Portal</h1>
+<p>Order your branch supplies easily</p>
+</header>
+
+<div class="container">
+<form action="https://formspree.io/f/your-form-id" method="POST">
+
+<h2>Branch Details</h2>
+<input type="text" name="branch" placeholder="Branch Name" required>
+<input type="text" name="manager" placeholder="Manager Name" required>
+<input type="tel" name="contact" placeholder="Contact Number" required>
+<input type="date" name="date" required>
+
+<h2>Momo Orders</h2>
+<div class="grid">
+<div class="card"><h3>Veg Momos</h3><select name="veg_momos"><option>0</option><option>50</option><option>100</option><option>150</option><option>200</option><option>250</option><option>300</option></select></div>
+<div class="card"><h3>Paneer Momos</h3><select name="paneer_momos"><option>0</option><option>50</option><option>100</option><option>150</option><option>200</option><option>250</option><option>300</option></select></div>
+<div class="card"><h3>Veg Cheese Momos</h3><select name="veg_cheese_momos"><option>0</option><option>50</option><option>100</option><option>150</option><option>200</option><option>250</option><option>300</option></select></div>
+<div class="card"><h3>Chicken Momos</h3><select name="chicken_momos"><option>0</option><option>50</option><option>100</option><option>150</option><option>200</option><option>250</option><option>300</option></select></div>
+<div class="card"><h3>Cheese Corn Momos</h3><select name="cheese_corn_momos"><option>0</option><option>50</option><option>100</option><option>150</option><option>200</option><option>250</option><option>300</option></select></div>
+</div>
+
+<h2>Packaging & Materials</h2>
+<div class="grid">
+
+<!-- Packaging Items -->
+
+<div class="card"><h3>Mayo</h3><div class="qty-box"><button type="button" onclick="changeQty('mayo',-1)">-</button><input id="mayo" name="mayo" type="number" value="0"><button type="button" onclick="changeQty('mayo',1)">+</button></div></div>
+<div class="card"><h3>Tandoori Mayo</h3><div class="qty-box"><button onclick="changeQty('tandoori',-1)" type="button">-</button><input id="tandoori" name="tandoori" type="number" value="0"><button onclick="changeQty('tandoori',1)" type="button">+</button></div></div>
+<div class="card"><h3>Royal Cream Mayo</h3><div class="qty-box"><button onclick="changeQty('royal',-1)" type="button">-</button><input id="royal" name="royal" type="number" value="0"><button onclick="changeQty('royal',1)" type="button">+</button></div></div>
+<div class="card"><h3>750ml Foil Box</h3><div class="qty-box"><button onclick="changeQty('foil750',-1)" type="button">-</button><input id="foil750" name="foil750" type="number" value="0"><button onclick="changeQty('foil750',1)" type="button">+</button></div></div>
+<div class="card"><h3>450ml Foil Box</h3><div class="qty-box"><button onclick="changeQty('foil450',-1)" type="button">-</button><input id="foil450" name="foil450" type="number" value="0"><button onclick="changeQty('foil450',1)" type="button">+</button></div></div>
+<div class="card"><h3>Foil Dish</h3><div class="qty-box"><button onclick="changeQty('dish',-1)" type="button">-</button><input id="dish" name="dish" type="number" value="0"><button onclick="changeQty('dish',1)" type="button">+</button></div></div>
+<div class="card"><h3>Small Bag</h3><div class="qty-box"><button onclick="changeQty('small',-1)" type="button">-</button><input id="small" name="small" type="number" value="0"><button onclick="changeQty('small',1)" type="button">+</button></div></div>
+<div class="card"><h3>Big Bag</h3><div class="qty-box"><button onclick="changeQty('big',-1)" type="button">-</button><input id="big" name="big" type="number" value="0"><button onclick="changeQty('big',1)" type="button">+</button></div></div>
+<div class="card"><h3>Paper Katori</h3><div class="qty-box"><button onclick="changeQty('katori',-1)" type="button">-</button><input id="katori" name="katori" type="number" value="0"><button onclick="changeQty('katori',1)" type="button">+</button></div></div>
+<div class="card"><h3>Dip</h3><div class="qty-box"><button onclick="changeQty('dip',-1)" type="button">-</button><input id="dip" name="dip" type="number" value="0"><button onclick="changeQty('dip',1)" type="button">+</button></div></div>
+<div class="card"><h3>SP Masala</h3><div class="qty-box"><button onclick="changeQty('masala',-1)" type="button">-</button><input id="masala" name="masala" type="number" value="0"><button onclick="changeQty('masala',1)" type="button">+</button></div></div>
+<div class="card"><h3>Tissues</h3><div class="qty-box"><button onclick="changeQty('tissues',-1)" type="button">-</button><input id="tissues" name="tissues" type="number" value="0"><button onclick="changeQty('tissues',1)" type="button">+</button></div></div>
+<div class="card"><h3>Spoon/Toothpick</h3><div class="qty-box"><button onclick="changeQty('spoon',-1)" type="button">-</button><input id="spoon" name="spoon" type="number" value="0"><button onclick="changeQty('spoon',1)" type="button">+</button></div></div>
+<div class="card"><h3>Oil</h3><div class="qty-box"><button onclick="changeQty('oil',-1)" type="button">-</button><input id="oil" name="oil" type="number" value="0"><button onclick="changeQty('oil',1)" type="button">+</button></div></div>
+<div class="card"><h3>Butter</h3><div class="qty-box"><button onclick="changeQty('butter',-1)" type="button">-</button><input id="butter" name="butter" type="number" value="0"><button onclick="changeQty('butter',1)" type="button">+</button></div></div>
+<div class="card"><h3>Dustbin Bag</h3><div class="qty-box"><button onclick="changeQty('dustbin',-1)" type="button">-</button><input id="dustbin" name="dustbin" type="number" value="0"><button onclick="changeQty('dustbin',1)" type="button">+</button></div></div>
+
+</div>
+
+<textarea name="notes" placeholder="Special notes"></textarea>
+<button class="submit" type="submit">Submit Order</button>
+
+</form>
+</div>
+
+<script>
+function changeQty(id,delta){
+ let el=document.getElementById(id);
+ let val=parseInt(el.value)||0;
+ el.value=Math.max(0,val+delta);
+}
+</script>
+
+</body>
+</html>
